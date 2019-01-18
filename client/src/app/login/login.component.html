@@ -1,0 +1,54 @@
+<!--Login Page Starts-->
+<section id="login">
+  <div class="container-fluid">
+    <div class="row window">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="card text-center form">
+          <div class="card-img overlap mt-3">
+            <img alt="logo" src="assets/img/logo.png" width="250">
+          </div>
+          <div class="card-body">
+            <div class="card-block">
+              <h2 class="mb-3">Login</h2>
+              <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="text-left">
+                <div class="mb-2">
+                  <input type="email" class="form-control" formControlName="email" name="User Email" placeholder="Enter Email">
+                  <div *ngIf="form.email.errors && (form.email.dirty || form.email.touched)" class="text-danger">
+                    <small *ngIf="form.email.errors.required">
+                      Email is required.
+                    </small>
+                    <small *ngIf="form.email.errors.pattern">
+                      Please enter a valid email.
+                    </small>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <input type="password" formControlName="password" class="form-control" name="User Password"
+                    placeholder="Enter Password">
+                  <div *ngIf="form.password.errors && (form.password.dirty || form.password.touched)" class="text-danger">
+                    <small *ngIf="form.password.errors.required">
+                      Password is required.
+                    </small>
+                    <small *ngIf="form.password.errors.minlength">
+                      Password must be minimum six characters.
+                    </small>
+                  </div>
+                </div>
+                <div *ngIf="isError" class="text-danger text-left mb-2">
+                  {{errorMsg}}
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-success btn-block btn-raised">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="float-right"><a routerLink="/register">New User?</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Login Page Ends-->
